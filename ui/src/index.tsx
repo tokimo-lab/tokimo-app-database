@@ -6,8 +6,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   type AppRuntimeCtx,
   type Dispose,
-  RuntimeProvider,
   defineApp,
+  RuntimeProvider,
 } from "@tokimo/sdk";
 import {
   ConfigProvider,
