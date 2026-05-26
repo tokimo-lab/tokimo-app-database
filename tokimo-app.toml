@@ -1,0 +1,24 @@
+[app]
+id          = "database"
+display     = "Database Manager"
+version     = "0.1.0"
+description = "Multi-engine database client for Tokimo OS"
+
+[runtime]
+lifecycle    = "resident"
+binary       = "tokimo-app-database"
+ui_dist      = "ui/dist"
+
+[ui]
+entry        = "assets/index.js"
+window_type  = "database"
+category     = "system"
+icon         = "Database"
+color        = "#4f46e5"
+width        = 1100
+height       = 700
+
+[database]
+schema         = "db_management"
+migrations_dir = "migrations"
+driver         = "postgres"
