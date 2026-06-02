@@ -26,8 +26,3 @@ rust-embed        = { version = "8", features = ["debug-embed"] }
 mime_guess        = "2"
 anyhow            = "1"
 axum              = { version = "0.8", features = ["json"] }
-
-[profile.release]
-lto       = "thin"
-opt-level = 3
-strip     = "symbols"
