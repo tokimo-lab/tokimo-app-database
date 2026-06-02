@@ -1,4 +1,4 @@
-use sea_orm::{ActiveModelTrait, DatabaseConnection, EntityTrait, Set};
+use sea_orm::{ActiveModelTrait, ColumnTrait, ConnectionTrait, EntityTrait, QueryFilter, Set, sea_query::Expr};
 use uuid::Uuid;
 
 use crate::db::entities::db_connections;
@@ -20,19 +20,19 @@ pub struct DbConnectionInput {
 pub struct DbConnectionRepo;
 
 impl DbConnectionRepo {
-    pub async fn list_all(db: &DatabaseConnection) -> Result<Vec<db_connections::Model>, AppError> {
+    pub async fn list_all<C: ConnectionTrait>(db: &C) -> Result<Vec<db_connections::Model>, AppError> {
         let rows = db_connections::Entity::find().all(db).await?;
         Ok(rows)
     }
 
-    pub async fn get_by_id(db: &DatabaseConnection, id: Uuid) -> Result<db_connections::Model, AppError> {
+    pub async fn get_by_id<C: ConnectionTrait>(db: &C, id: Uuid) -> Result<db_connections::Model, AppError> {
         db_connections::Entity::find_by_id(id)
             .one(db)
             .await?
             .ok_or_else(|| AppError::NotFound("DB connection not found".into()))
     }
 
-    pub async fn create(db: &DatabaseConnection, input: DbConnectionInput) -> Result<db_connections::Model, AppError> {
+    pub async fn create<C: ConnectionTrait>(db: &C, input: DbConnectionInput) -> Result<db_connections::Model, AppError> {
         let now = chrono::Utc::now().fixed_offset();
         let model = db_connections::ActiveModel {
             id: Set(Uuid::new_v4()),
@@ -51,32 +51,32 @@ impl DbConnectionRepo {
         Ok(result)
     }
 
-    pub async fn update(
-        db: &DatabaseConnection,
+    pub async fn update<C: ConnectionTrait>(
+        db: &C,
         id: Uuid,
         input: DbConnectionInput,
     ) -> Result<db_connections::Model, AppError> {
-        let existing = db_connections::Entity::find_by_id(id)
-            .one(db)
-            .await?
-            .ok_or_else(|| AppError::NotFound("DB connection not found".into()))?;
-
         let now = chrono::Utc::now().fixed_offset();
-        let mut am: db_connections::ActiveModel = existing.into();
-        am.driver = Set(input.driver);
-        am.name = Set(input.name);
-        am.host = Set(input.host);
-        am.port = Set(input.port);
-        am.username = Set(input.username);
-        am.password = Set(input.password);
-        am.database = Set(input.database);
-        am.params = Set(input.params);
-        am.updated_at = Set(now);
-        let result = am.update(db).await?;
-        Ok(result)
+        let mut results = db_connections::Entity::update_many()
+            .filter(db_connections::Column::Id.eq(id))
+            .col_expr(db_connections::Column::Driver, Expr::value(input.driver))
+            .col_expr(db_connections::Column::Name, Expr::value(input.name))
+            .col_expr(db_connections::Column::Host, Expr::value(input.host))
+            .col_expr(db_connections::Column::Port, Expr::value(input.port))
+            .col_expr(db_connections::Column::Username, Expr::value(input.username))
+            .col_expr(db_connections::Column::Password, Expr::value(input.password))
+            .col_expr(db_connections::Column::Database, Expr::value(input.database))
+            .col_expr(db_connections::Column::Params, Expr::value(input.params))
+            .col_expr(db_connections::Column::UpdatedAt, Expr::value(now))
+            .exec_with_returning(db)
+            .await?;
+        results
+            .into_iter()
+            .next()
+            .ok_or_else(|| AppError::NotFound("DB connection not found".into()))
     }
 
-    pub async fn delete(db: &DatabaseConnection, id: Uuid) -> Result<(), AppError> {
+    pub async fn delete<C: ConnectionTrait>(db: &C, id: Uuid) -> Result<(), AppError> {
         db_connections::Entity::delete_by_id(id).exec(db).await?;
         Ok(())
     }
