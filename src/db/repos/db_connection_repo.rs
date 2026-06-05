@@ -57,7 +57,7 @@ impl DbConnectionRepo {
         input: DbConnectionInput,
     ) -> Result<db_connections::Model, AppError> {
         let now = chrono::Utc::now().fixed_offset();
-        let mut results = db_connections::Entity::update_many()
+        let results = db_connections::Entity::update_many()
             .filter(db_connections::Column::Id.eq(id))
             .col_expr(db_connections::Column::Driver, Expr::value(input.driver))
             .col_expr(db_connections::Column::Name, Expr::value(input.name))
