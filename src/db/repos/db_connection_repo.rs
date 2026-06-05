@@ -32,7 +32,10 @@ impl DbConnectionRepo {
             .ok_or_else(|| AppError::NotFound("DB connection not found".into()))
     }
 
-    pub async fn create<C: ConnectionTrait>(db: &C, input: DbConnectionInput) -> Result<db_connections::Model, AppError> {
+    pub async fn create<C: ConnectionTrait>(
+        db: &C,
+        input: DbConnectionInput,
+    ) -> Result<db_connections::Model, AppError> {
         let now = chrono::Utc::now().fixed_offset();
         let model = db_connections::ActiveModel {
             id: Set(Uuid::new_v4()),
