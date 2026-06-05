@@ -78,7 +78,7 @@ export default function QueryResultView({
               </colgroup>
             )}
             <thead ref={theadRef} className="sticky top-0 z-10">
-              <tr className="bg-surface-glass backdrop-blur-sm">
+              <tr className="bg-surface-overlay backdrop-blur-sm">
                 <th className="px-2 py-1.5 text-left text-[10px] font-semibold uppercase tracking-wider text-fg-muted border-b border-border-base w-10">
                   #
                 </th>

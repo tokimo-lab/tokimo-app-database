@@ -389,7 +389,7 @@ export default function TableDataView({ sessionId, table, schema }: Props) {
             <button
               type="button"
               disabled={page === 0}
-              className="p-0.5 rounded hover:bg-surface-glass-hover disabled:opacity-30 cursor-pointer"
+              className="p-0.5 rounded hover:bg-surface-overlay-hover disabled:opacity-30 cursor-pointer"
               onClick={() => setPage((p) => Math.max(0, p - 1))}
             >
               <ChevronLeft className="h-3.5 w-3.5" />
@@ -398,7 +398,7 @@ export default function TableDataView({ sessionId, table, schema }: Props) {
             <button
               type="button"
               disabled={!hasNextPage}
-              className="p-0.5 rounded hover:bg-surface-glass-hover disabled:opacity-30 cursor-pointer"
+              className="p-0.5 rounded hover:bg-surface-overlay-hover disabled:opacity-30 cursor-pointer"
               onClick={() => setPage((p) => p + 1)}
             >
               <ChevronRight className="h-3.5 w-3.5" />
@@ -421,7 +421,7 @@ export default function TableDataView({ sessionId, table, schema }: Props) {
             </colgroup>
           )}
           <thead ref={theadRef} className="sticky top-0 z-10">
-            <tr className="bg-surface-glass backdrop-blur-sm">
+            <tr className="bg-surface-overlay backdrop-blur-sm">
               <th className="px-2 py-1.5 text-left text-[10px] font-semibold uppercase tracking-wider text-fg-muted border-b border-border-base w-10">
                 #
               </th>
@@ -610,7 +610,7 @@ function InsertRow({
           </button>
           <button
             type="button"
-            className="p-0.5 rounded hover:bg-surface-glass-hover text-fg-secondary cursor-pointer"
+            className="p-0.5 rounded hover:bg-surface-overlay-hover text-fg-secondary cursor-pointer"
             onClick={onCancel}
             title="取消"
           >

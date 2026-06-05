@@ -96,7 +96,7 @@ export default function CellEditor({
       </button>
       <button
         type="button"
-        className="p-0.5 rounded bg-surface-glass hover:bg-surface-glass-hover text-fg-secondary transition-colors cursor-pointer"
+        className="p-0.5 rounded bg-surface-overlay hover:bg-surface-overlay-hover text-fg-secondary transition-colors cursor-pointer"
         onClick={onCancel}
         title="取消"
       >
@@ -194,7 +194,7 @@ export function CellEditorFloating({
           node;
       }}
       style={{ ...floatingStyles, width: floatingWidth }}
-      className="z-[999] rounded-lg border border-border-base shadow-[0_8px_32px_rgba(0,0,0,0.3)] bg-[var(--surface,white)] dark:bg-[rgb(10,10,10)]"
+      className="z-[999] rounded-lg border border-border-base shadow-[0_8px_32px_rgba(0,0,0,0.3)] bg-surface-raised"
     >
       <div className="flex items-center justify-between px-3 py-2 border-b border-border-subtle">
         <span className="text-xs font-medium text-fg-secondary truncate">
@@ -211,7 +211,7 @@ export function CellEditorFloating({
           </button>
           <button
             type="button"
-            className="inline-flex items-center gap-1 px-2 py-1 rounded text-xs bg-surface-glass hover:bg-surface-glass-hover text-fg-secondary transition-colors cursor-pointer"
+            className="inline-flex items-center gap-1 px-2 py-1 rounded text-xs bg-surface-overlay hover:bg-surface-overlay-hover text-fg-secondary transition-colors cursor-pointer"
             onClick={onCancel}
           >
             <X className="h-3 w-3" />

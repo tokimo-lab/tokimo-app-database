@@ -58,7 +58,7 @@ export default function TableStructureView({
         </h3>
         <table className="w-full border-collapse">
           <thead>
-            <tr className="bg-surface-glass backdrop-blur-sm">
+            <tr className="bg-surface-overlay backdrop-blur-sm">
               <th className="px-2 py-1.5 text-left text-[10px] font-semibold uppercase tracking-wider text-fg-muted border-b border-border-base">
                 #
               </th>
@@ -136,7 +136,7 @@ export default function TableStructureView({
           </h3>
           <table className="w-full border-collapse">
             <thead>
-              <tr className="bg-surface-glass backdrop-blur-sm">
+              <tr className="bg-surface-overlay backdrop-blur-sm">
                 <th className="px-2 py-1.5 text-left text-[10px] font-semibold uppercase tracking-wider text-fg-muted border-b border-border-base">
                   名称
                 </th>
@@ -186,7 +186,7 @@ export default function TableStructureView({
           </h3>
           <table className="w-full border-collapse">
             <thead>
-              <tr className="bg-surface-glass backdrop-blur-sm">
+              <tr className="bg-surface-overlay backdrop-blur-sm">
                 <th className="px-2 py-1.5 text-left text-[10px] font-semibold uppercase tracking-wider text-fg-muted border-b border-border-base">
                   名称
                 </th>
@@ -233,7 +233,7 @@ export default function TableStructureView({
       {detail.createSql && (
         <section>
           <h3 className="text-sm font-medium text-fg-primary mb-2">建表 SQL</h3>
-          <pre className="whitespace-pre-wrap text-[11px] font-mono bg-surface-glass p-3 rounded-lg border border-border-base text-fg-primary overflow-x-auto">
+          <pre className="whitespace-pre-wrap text-[11px] font-mono bg-surface-overlay p-3 rounded-lg border border-border-base text-fg-primary overflow-x-auto">
             {detail.createSql}
           </pre>
         </section>

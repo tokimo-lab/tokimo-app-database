@@ -232,7 +232,7 @@ export default function DatabaseApp({ ctx: _ctx }: { ctx: AppRuntimeCtx }) {
         footer={
           <button
             type="button"
-            className="w-full flex items-center justify-center gap-1.5 rounded-md px-2 py-1.5 text-xs font-medium text-[var(--text-tertiary)] hover:text-[var(--accent)] hover:bg-[var(--accent-subtle)] transition-colors cursor-pointer"
+            className="w-full flex items-center justify-center gap-1.5 rounded-md px-2 py-1.5 text-xs font-medium text-[var(--color-fg-muted)] hover:text-[var(--color-accent)] hover:bg-[var(--color-accent-subtle)] transition-colors cursor-pointer"
             onClick={() => setModal({ kind: "create" })}
           >
             <Plus className="h-3.5 w-3.5" />
@@ -244,7 +244,7 @@ export default function DatabaseApp({ ctx: _ctx }: { ctx: AppRuntimeCtx }) {
       {/* ── Right Content ── */}
       <div className="flex-1 min-w-0 relative">
         {!selectedId && (
-          <div className="flex flex-col items-center justify-center h-full text-[var(--text-quaternary)] gap-2">
+          <div className="flex flex-col items-center justify-center h-full text-[var(--color-fg-disabled)] gap-2">
             <Database className="h-8 w-8" />
             <span className="text-sm">选择数据库或新建一个</span>
           </div>

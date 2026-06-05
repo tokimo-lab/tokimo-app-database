@@ -264,7 +264,7 @@ export default function DatabaseBrowserWindow({
   return (
     <div className="flex h-full">
       {/* ── Left Sidebar ── */}
-      <div className="w-56 flex-shrink-0 border-r border-border-base flex flex-col overflow-hidden bg-[var(--sidebar-bg)]">
+      <div className="w-56 flex-shrink-0 border-r border-border-base flex flex-col overflow-hidden bg-[var(--color-surface-sidebar)]">
         <div className="flex-1 overflow-y-auto text-xs select-none">
           {/* Databases */}
           {(databasesQuery.data ?? []).map((db) => (
@@ -329,7 +329,7 @@ export default function DatabaseBrowserWindow({
       {/* ── Right Panel ── */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {/* Connection info bar */}
-        <div className="flex items-center gap-1.5 px-3 py-1 border-b border-border-subtle text-[10px] text-fg-muted bg-[var(--sidebar-bg)] select-none">
+        <div className="flex items-center gap-1.5 px-3 py-1 border-b border-border-subtle text-[10px] text-fg-muted bg-[var(--color-surface-sidebar)] select-none">
           <span className="font-medium text-fg-secondary">
             {session.config.name}
           </span>
@@ -397,7 +397,7 @@ function DatabaseTreeNode({
     <div>
       {/* biome-ignore lint/a11y/noStaticElementInteractions: tree node */}
       <div
-        className={`group/node flex items-center gap-1 px-2 py-1 cursor-pointer hover:bg-surface-glass-hover ${
+        className={`group/node flex items-center gap-1 px-2 py-1 cursor-pointer hover:bg-surface-overlay-hover ${
           isCurrentDb ? "text-accent font-medium" : "text-fg-secondary"
         }`}
         onClick={onToggle}
@@ -424,7 +424,7 @@ function DatabaseTreeNode({
           )}
           <button
             type="button"
-            className="p-0.5 rounded opacity-0 group-hover/node:opacity-100 hover:bg-surface-glass-hover text-fg-muted hover:text-fg-secondary transition-opacity cursor-pointer"
+            className="p-0.5 rounded opacity-0 group-hover/node:opacity-100 hover:bg-surface-overlay-hover text-fg-muted hover:text-fg-secondary transition-opacity cursor-pointer"
             onClick={(e) => {
               e.stopPropagation();
               onRefresh();
@@ -462,7 +462,7 @@ function SchemaTreeNode({
     <div>
       {/* biome-ignore lint/a11y/noStaticElementInteractions: tree node */}
       <div
-        className="group/node flex items-center gap-1 px-2 py-1 cursor-pointer hover:bg-surface-glass-hover text-fg-secondary"
+        className="group/node flex items-center gap-1 px-2 py-1 cursor-pointer hover:bg-surface-overlay-hover text-fg-secondary"
         onClick={onToggle}
         onKeyDown={(e) => {
           if (e.key === "Enter" || e.key === " ") onToggle();
@@ -481,7 +481,7 @@ function SchemaTreeNode({
           )}
           <button
             type="button"
-            className="p-0.5 rounded opacity-0 group-hover/node:opacity-100 hover:bg-surface-glass-hover text-fg-muted hover:text-fg-secondary transition-opacity cursor-pointer"
+            className="p-0.5 rounded opacity-0 group-hover/node:opacity-100 hover:bg-surface-overlay-hover text-fg-muted hover:text-fg-secondary transition-opacity cursor-pointer"
             onClick={(e) => {
               e.stopPropagation();
               onRefresh();
@@ -548,7 +548,7 @@ function TableListItems({
               <button
                 key={t.name}
                 type="button"
-                className={`w-full flex items-center gap-1.5 px-3 py-1 text-left hover:bg-surface-glass-hover transition-colors cursor-pointer ${
+                className={`w-full flex items-center gap-1.5 px-3 py-1 text-left hover:bg-surface-overlay-hover transition-colors cursor-pointer ${
                   selectedTable === t.name
                     ? "bg-accent-subtle text-accent"
                     : "text-fg-secondary"
