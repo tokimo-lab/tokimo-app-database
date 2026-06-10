@@ -327,7 +327,7 @@ export default function DatabaseBrowserWindow({
       </div>
 
       {/* ── Right Panel ── */}
-      <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+      <div className="flex-1 flex flex-col min-w-0 overflow-hidden bg-[var(--color-surface-content)]">
         {/* Connection info bar */}
         <div className="flex items-center gap-1.5 px-3 py-1 border-b border-border-subtle text-[10px] text-fg-muted bg-[var(--color-surface-sidebar)] select-none">
           <span className="font-medium text-fg-secondary">

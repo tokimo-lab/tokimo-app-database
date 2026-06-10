@@ -242,7 +242,7 @@ export default function DatabaseApp({ ctx: _ctx }: { ctx: AppRuntimeCtx }) {
       />
 
       {/* ── Right Content ── */}
-      <div className="flex-1 min-w-0 relative">
+      <div className="flex-1 min-w-0 relative bg-[var(--color-surface-content)]">
         {!selectedId && (
           <div className="flex flex-col items-center justify-center h-full text-[var(--color-fg-disabled)] gap-2">
             <Database className="h-8 w-8" />
