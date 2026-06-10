@@ -14,6 +14,7 @@ entry        = "assets/index.js"
 window_type  = "database"
 category     = "system"
 icon         = "Database"
+image        = "icon.png"
 color        = "#4f46e5"
 width        = 1100
 height       = 700
