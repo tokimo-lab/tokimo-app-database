@@ -48,6 +48,11 @@ export default defineApp({
     defaultSize: { width: 1200, height: 760 },
     category: "system",
   },
+  standalone: {
+    createWindow: (route) => ({ type: "database", route }),
+    getRoute: (window) =>
+      window.type === "database" ? (window.route ?? "/") : null,
+  },
   mount(container, ctx): Dispose {
     const qc = new QueryClient({
       defaultOptions: {
