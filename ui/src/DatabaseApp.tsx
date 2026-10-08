@@ -313,6 +313,16 @@ function ConnectionModal({
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/40"
+      style={{
+        paddingTop:
+          "max(1rem, var(--safe-area-top, env(safe-area-inset-top, 0px)))",
+        paddingRight:
+          "max(1rem, var(--safe-area-right, env(safe-area-inset-right, 0px)))",
+        paddingBottom:
+          "max(1rem, var(--safe-area-bottom, env(safe-area-inset-bottom, 0px)))",
+        paddingLeft:
+          "max(1rem, var(--safe-area-left, env(safe-area-inset-left, 0px)))",
+      }}
       onClick={(e) => {
         if (e.target === e.currentTarget) onCancel();
       }}
@@ -322,7 +332,7 @@ function ConnectionModal({
       role="dialog"
       aria-modal="true"
     >
-      <div className="bg-surface-base border border-border-base rounded-xl shadow-2xl w-[520px] max-h-[80vh] overflow-y-auto p-6">
+      <div className="bg-surface-base border border-border-base rounded-xl shadow-2xl w-[520px] max-w-full max-h-full overflow-y-auto p-6">
         <h2 className="text-base font-semibold text-fg-primary mb-4">
           {title}
         </h2>
